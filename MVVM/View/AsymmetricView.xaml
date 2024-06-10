@@ -1,0 +1,174 @@
+﻿<UserControl x:Class="EncryptedChatApp.MVVM.View.AsymmetricView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EncryptedChatApp.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <Grid Margin="4,0,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="120"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="700"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Border CornerRadius="15" Width="200" Height="35"  VerticalAlignment="Center" >
+                    <TextBlock x:Name="RSA"
+                            Background="Transparent" 
+                            Text="RSA Algorithm" 
+                            Foreground="white"
+                            FontSize="17" HorizontalAlignment="Center" 
+                            VerticalAlignment="Center"/>
+                </Border>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Button         
+                        Style="{StaticResource RefreshButton}" 
+                        Height="50" Width="75" 
+                        FontWeight="Bold" Content="Refresh" Background="#189AB4"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center" 
+                        Click="RefreshButton_Click" Margin="0,0,20,0"/>
+            </Grid>
+        </Grid>
+        <!--PlainText-->
+        <Border Background="#eeeee4" CornerRadius="9" Width="767" Height="80" Grid.Row="1" Margin="0,0,3,0">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <TextBlock x:Name="AsymmetricPlainText"
+            Background="Transparent" 
+            Text="" 
+            TextWrapping="Wrap" 
+            TextTrimming="CharacterEllipsis"
+            FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="7"/>
+            </ScrollViewer>
+        </Border>
+
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="700"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+
+                <!--EncryptedText-->
+                    <Border Background="#eeeee4" CornerRadius="9" Width="680" Height="80" 
+                        VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.ColumnSpan="2">
+
+                     <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <TextBlock x:Name="AsymmetricEncryptedText"
+                        Background="Transparent" 
+                        Text="" 
+                        TextWrapping="Wrap" 
+                        TextTrimming="CharacterEllipsis"
+                        FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="7"/>
+                    </ScrollViewer>
+                    </Border>
+            </Grid>
+            <Grid Grid.Column="1">
+                <!--Button Encrypted Text-->
+                <Button x:Name="EncryptButton"
+                    Style="{StaticResource ConvertButton}" 
+                    Height="75" Width="75" 
+                    FontWeight="Bold" Content="Encrypt" Background="#17ebaf"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center" Margin="0,0,20,0"
+                        Click="EncryptButton_Click"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="700"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <!--DecryptedText-->
+                <Border Background="#eeeee4" CornerRadius="9" Width="680" Height="80" 
+                        VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0" Margin="0,0,0,0">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <TextBlock x:Name="AsymmetricDecryptedText"
+                         Background="Transparent" 
+                         Text="" 
+                        TextWrapping="Wrap" 
+                        TextTrimming="CharacterEllipsis"
+                        FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="7"/>
+                    </ScrollViewer>
+                </Border>
+            </Grid>
+            <Grid Grid.Column="1">
+                <!--Button Decrypted Text-->
+                <Button x:Name="DecryptButton"       
+                    Style="{StaticResource ConvertButton}" 
+                    Height="75" Width="75" 
+                    FontWeight="Bold" Content="Decrypt" Background="#17ebaf"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center" Margin="0,0,20,0"
+                    Click="DecryptButton_Click"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="700"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <!--DecryptedText-->
+                <Border Background="#eeeee4" CornerRadius="9" Width="680" Height="80" 
+                VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0" Margin="0,0,0,0">
+                    <StackPanel>
+                        <TextBlock x:Name="InfoPath"
+                                    Background="Transparent" 
+                                    Text="Searching file for encryption/decryption"  
+                                    TextTrimming="CharacterEllipsis"
+                                    Foreground="black"
+                                    FontWeight="bold"
+                                    FontSize="12" 
+                                    
+                                    HorizontalAlignment="Left" VerticalAlignment="Top" 
+                                    Margin="11,5,5,5"/>
+                        <TextBox x:Name="TextBoxPath"
+                                Height="30"
+                                Style="{DynamicResource TextareaPath}"/>
+
+                    </StackPanel>
+                </Border>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <!--Button Verify Text Path-->
+                    <Button x:Name="VerifyButtonPath"       
+                        Style="{StaticResource ConvertButton}" 
+                        Height="40" Width="75" 
+                        FontWeight="Bold" Content="Verify" Background="#17ebaf"
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Center" Margin="0,0,20,2"
+                        Click="VerifyButtonPath_Click"/>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <!--Button Encrypt/Decrypt Text Path-->
+                    <Button x:Name="EDCreateButtonPath"       
+                        Style="{StaticResource ConvertButton}" 
+                        Height="40" Width="75" 
+                        FontWeight="Bold" Content="Create" Background="#17ebaf"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Center" Margin="0,2,20,0" 
+                        Click="EDCreateButtonPath_Click"/>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+
+</UserControl>

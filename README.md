@@ -1,2 +1,2 @@
 # EncryptedChat
-Chat which encrypt &amp;&amp; decrypt data using algorithms
+Chat which encrypts && decrypts data using algorithms

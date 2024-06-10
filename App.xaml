@@ -1,0 +1,36 @@
+﻿<Application x:Class="EncryptedChatApp.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:EncryptedChatApp"
+             xmlns:viewModel="clr-namespace:EncryptedChatApp.MVVM.ViewModel"
+             xmlns:view="clr-namespace:EncryptedChatApp.MVVM.View"
+             xmlns:model="clr-namespace:EncryptedChatApp.MVVM.Model"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/closeButtonStyle.xaml"/>
+                <ResourceDictionary Source="Styles/textareaStyle.xaml"/>
+                <ResourceDictionary Source="Styles/submitButtonStyle.xaml"/>
+                <ResourceDictionary Source="Styles/menuButtonStyle.xaml"/>
+                <ResourceDictionary Source="Styles/convertButtonStyle.xaml"/>
+                <ResourceDictionary Source="Styles/scrollViewStyle.xaml"/>
+                <ResourceDictionary Source="Styles/refreshButton.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
+                <view:HomeView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:SymmetricViewModel}">
+                <view:SymmetricView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:AsymmetricViewModel}">
+                <view:AsymmetricView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:DigSignatureViewModel}">
+                <view:DigSignatureView/>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Application.Resources>
+    
+</Application>

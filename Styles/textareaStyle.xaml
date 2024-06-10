@@ -1,0 +1,162 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+   
+    <Style x:Key="Textarea" TargetType="{x:Type TextBox}">
+        <Setter Property="FontSize"  Value="12"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Width" Value="720"/>
+        <Setter Property="Height" Value="100"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="10,10,0,0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}" >
+                    <Border x:Name="txtBorder"
+                            CornerRadius="15"
+                            BorderThickness="0"
+                            Background="Transparent"
+                            SnapsToDevicePixels="True">
+                        <Grid>
+                            <ScrollViewer x:Name="PART_ContentHost" 
+                                      Focusable="True"
+                                      HorizontalScrollBarVisibility="Hidden"
+                                      VerticalScrollBarVisibility="Hidden"/>
+
+                            <TextBlock IsHitTestVisible="False"
+                                   Text="Plain text..."
+                                   HorizontalAlignment="Left"
+                                   Margin="10,10,0,0"
+                                   FontSize="15"
+                                       FontFamily="Courier New" 
+                                   Foreground="DarkGray">
+
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=PlainTextBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                        <Setter Property="Visibility" Value="Hidden"/>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+
+                        </Grid>
+
+                    </Border>
+                    
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TextareaPath" TargetType="{x:Type TextBox}">
+        <Setter Property="FontSize"  Value="15"/>
+        <Setter Property="Foreground" Value="black"/>
+        <Setter Property="Width" Value="670"/>
+        <Setter Property="Height" Value="100"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="0,5,0,0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}" >
+                    <Border x:Name="txtBorder"
+                            CornerRadius="15"
+                            BorderThickness="0"
+                            Background="Transparent"
+                            SnapsToDevicePixels="True">
+                        <Grid>
+                            <ScrollViewer x:Name="PART_ContentHost" 
+                                      Focusable="True"
+                                      HorizontalScrollBarVisibility="Hidden"
+                                      VerticalScrollBarVisibility="Hidden"/>
+
+                            <TextBlock IsHitTestVisible="False"
+                                   Text="/..path../"
+                                   HorizontalAlignment="Left"
+                                   Margin="2,8,0,0"
+                                   FontSize="15"
+                                   FontFamily="Courier New" 
+                                   Foreground="DarkGray">
+
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=TextBoxPath}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                        <Setter Property="Visibility" Value="Hidden"/>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+
+                        </Grid>
+
+                    </Border>
+
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="TextareaModify" TargetType="{x:Type TextBox}">
+        <Setter Property="FontSize"  Value="13"/>
+        <Setter Property="Foreground" Value="black"/>
+        <Setter Property="Width" Value="670"/>
+        <Setter Property="Height" Value="100"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="0,0,0,0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}" >
+                    <Border x:Name="txtBorder"
+                        CornerRadius="15"
+                        BorderThickness="0"
+                        Background="Transparent"
+                        SnapsToDevicePixels="True">
+                        <Grid>
+                            <ScrollViewer x:Name="PART_ContentHost" 
+                                  Focusable="True"
+                                  HorizontalScrollBarVisibility="Hidden"
+                                  VerticalScrollBarVisibility="Auto"/>
+
+                            <TextBlock IsHitTestVisible="False"
+                               Text="Modify here..."
+                               HorizontalAlignment="Left"
+                               Margin="2,0,0,0"
+                               FontSize="13"
+                               
+                               Foreground="DarkGray">
+
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=ModifyTextBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                        <Setter Property="Visibility" Value="Hidden"/>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+
+                        </Grid>
+
+                    </Border>
+
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

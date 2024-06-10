@@ -1,0 +1,122 @@
+﻿<Window x:Class="EncryptedChatApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EncryptedChatApp"
+        xmlns:viewModel="clr-namespace:EncryptedChatApp.MVVM.ViewModel"
+        xmlns:view="clr-namespace:EncryptedChatApp.MVVM.View"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True"
+        Title="MainWindow" Width="810" Height="700">
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+    
+    <Border Background="#FF373636"
+        CornerRadius="20"
+        MouseDown="Border_MouseDown">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="470"/>
+                <RowDefinition Height="130"/>
+            </Grid.RowDefinitions>
+
+            <Border Background="#838181" CornerRadius="15" Width="800" Height="35"  VerticalAlignment="Top" Margin="0,6,0,0">
+                <TextBlock x:Name="TitleApp"
+                           Background="Transparent" 
+                           Text="Encrypt&#38;Decrypt Chat" 
+                           FontSize="17" HorizontalAlignment="Left" Margin="65,8,0,0"
+                           FontFamily="Arial Black"/>
+            </Border>
+            <Button Style="{StaticResource RoundedButtonClose}" 
+            Content="X" 
+            FontWeight="Bold"
+            Background="#cc0000" 
+            Height="35"
+            Width="35"
+            Click="CloseButton_Click" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,6,4,0"/>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="270"/>
+                    <ColumnDefinition Width="270"/>
+                    <ColumnDefinition Width="270"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <RadioButton 
+                        Content="Symmetric" 
+                        Height="50"
+                        FontSize="14"
+                        Style="{StaticResource menuButtonStyle}"
+                        Command="{Binding SymmetricViewCommand}"
+                        GroupName="EncryptionType"
+                        />
+                    <!--Click="MoveToTestViewButton_Click"-->
+                </Grid>
+                <Grid Grid.Column="1">
+                    <RadioButton Content="Asymmetric"
+                        Height="50"
+                        Command="{Binding AsymmetricViewCommand}"
+                        FontSize="14"
+                        Style="{StaticResource menuButtonStyle}"
+                        GroupName="EncryptionType"
+                        />
+                </Grid>
+                <Grid Grid.Column="2">
+                    <RadioButton Content="Digital Signature"
+                        Height="50"
+                        Command="{Binding DigSignatureCommand}"
+                        FontSize="14"
+                        Style="{StaticResource menuButtonStyle}"
+                        GroupName="EncryptionType"
+                        />
+                    
+                </Grid>
+            </Grid>
+            
+
+            
+            <Border CornerRadius="15" Background="#212121" 
+                    Height="110" Width="780" 
+                    BorderBrush="#101115" BorderThickness="1"
+                    VerticalAlignment="Bottom" Margin="0,0,0,20" Grid.Row="3"/>
+            <TextBox
+                    x:Name="PlainTextBox"
+                    VerticalAlignment="Bottom" 
+                    Margin="0,0,40,20"  Grid.Row="3"
+                    TextWrapping="Wrap" 
+                    AcceptsReturn="True"
+                    FontSize="15"
+                    CaretBrush="White"
+                    FontFamily="Courier New"
+                    PreviewKeyDown = "CheckTextarea"
+                    Style="{DynamicResource Textarea}"/>
+
+            <Button x:Name="SubmitButton"
+                    Style="{StaticResource SubmitButton}"
+                    Width="35" Height="35"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom" Margin="0,0,30,80"
+                    Background="#212121" 
+                    Grid.Row="3"
+                    Click="SubmitButton_Click">
+                <Image Source="Resources/Images/submit.png" Width="50"/>
+            </Button>
+           
+            <ContentControl Grid.Row="2" Margin="8"
+                            Content="{Binding CurrentView}"/>
+            <!--<Grid Grid.Row="2" Margin="8" x:Name="currentView">
+                
+            </Grid>-->
+        </Grid>
+
+    </Border>
+</Window>

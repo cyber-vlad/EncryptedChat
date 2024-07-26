@@ -37,7 +37,8 @@
                         FontWeight="Bold" Content="Refresh" Background="#189AB4"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center" 
-                        Margin="0,0,20,0"/>
+                        Margin="0,0,20,0"
+                    Click="RefreshButton_Click"/>
             </Grid>
         </Grid>
         <!--PlainText-->

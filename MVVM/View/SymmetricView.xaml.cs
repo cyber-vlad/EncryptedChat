@@ -93,5 +93,10 @@ namespace EncryptedChatApp.MVVM.View
             
             TextBoxPath.Text = "";
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
